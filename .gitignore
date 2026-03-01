@@ -1,0 +1,78 @@
+# Maven
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
+.mvn/timing.properties
+.mvn/wrapper/maven-wrapper.jar
+.m2/
+
+# IDE - IntelliJ IDEA
+.idea/
+*.iml
+*.iws
+*.ipr
+out/
+*.jks
+*.keystore
+
+# IDE - Eclipse
+.classpath
+.project
+.settings/
+.metadata/
+bin/
+
+# IDE - Visual Studio Code
+.vscode/
+*.code-workspace
+
+# IDE - NetBeans
+nbproject/
+.nb-gradle/
+
+# Build
+*.class
+*.jar
+*.war
+*.ear
+*.zip
+*.tar.gz
+*.rar
+
+# System
+.DS_Store
+Thumbs.db
+*.log
+*.swp
+*.swo
+*~
+
+# Runtime
+*.pid
+*.seed
+*.pid.lock
+
+# Test coverage
+jacoco.exec
+.jacoco.exec
+
+# Compiled output
+*.o
+*.so
+
+# Node modules (if using any Node tools)
+node_modules/
+npm-debug.log
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Program related files
+*csv

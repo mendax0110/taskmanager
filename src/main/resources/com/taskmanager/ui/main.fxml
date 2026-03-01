@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.taskmanager.ui.MainController"
+            stylesheets="@style.css">
+
+    <top>
+        <VBox styleClass="header">
+            <Label text="Task Manager" styleClass="title-label"/>
+            <Label fx:id="summaryLabel" styleClass="summary-label"/>
+        </VBox>
+    </top>
+
+    <center>
+        <VBox spacing="0">
+            <fx:define>
+                <ToggleGroup fx:id="filterGroup"/>
+            </fx:define>
+            <HBox spacing="10" styleClass="toolbar">
+                <Label text="Filter:"/>
+                <RadioButton text="All"      fx:id="filterAll"      toggleGroup="$filterGroup" selected="true"/>
+                <RadioButton text="Pending"  fx:id="filterPending"  toggleGroup="$filterGroup"/>
+                <RadioButton text="Overdue"  fx:id="filterOverdue"  toggleGroup="$filterGroup"/>
+                <RadioButton text="Done"     fx:id="filterDone"     toggleGroup="$filterGroup"/>
+                <Region HBox.hgrow="ALWAYS"/>
+                <ComboBox fx:id="categoryFilter" promptText="All Categories" prefWidth="160"/>
+            </HBox>
+
+            <TableView fx:id="taskTable" VBox.vgrow="ALWAYS" styleClass="task-table">
+                <columns>
+                    <TableColumn fx:id="colStatus"   text="✓"        prefWidth="40"  minWidth="40"  maxWidth="40"/>
+                    <TableColumn fx:id="colId"        text="#"        prefWidth="45"  minWidth="45"  maxWidth="45"/>
+                    <TableColumn fx:id="colTitle"     text="Title"    prefWidth="220"/>
+                    <TableColumn fx:id="colCategory"  text="Category" prefWidth="90"/>
+                    <TableColumn fx:id="colPriority"  text="Priority" prefWidth="90"/>
+                    <TableColumn fx:id="colDueDate"   text="Due Date" prefWidth="110"/>
+                    <TableColumn fx:id="colProject"   text="Project"  prefWidth="120"/>
+                </columns>
+                <placeholder>
+                    <Label text="No tasks found." styleClass="placeholder-label"/>
+                </placeholder>
+            </TableView>
+        </VBox>
+    </center>
+
+    <right>
+        <VBox spacing="12" styleClass="side-panel" minWidth="220" maxWidth="220">
+            <Label text="SELECTED TASK" styleClass="panel-heading"/>
+            <Label fx:id="detailTitle"    styleClass="detail-title"   wrapText="true"/>
+            <Label fx:id="detailDesc"     styleClass="detail-desc"    wrapText="true"/>
+            <Label fx:id="detailMeta"     styleClass="detail-meta"    wrapText="true"/>
+
+            <Separator/>
+
+            <Label text="ACTIONS" styleClass="panel-heading"/>
+            <Button fx:id="btnComplete" text="✓  Mark Complete"   onAction="#onComplete"  maxWidth="Infinity" styleClass="btn-success"/>
+            <Button fx:id="btnDelete"   text="✗  Delete Task"     onAction="#onDelete"    maxWidth="Infinity" styleClass="btn-danger"/>
+
+            <Separator/>
+
+            <Label text="ADD TASK" styleClass="panel-heading"/>
+            <TextField fx:id="inputTitle"       promptText="Title"         styleClass="input-field"/>
+            <TextField fx:id="inputDescription" promptText="Description"   styleClass="input-field"/>
+            <TextField fx:id="inputDueDate"     promptText="Due (YYYY-MM-DD)" styleClass="input-field"/>
+
+            <ComboBox fx:id="inputType" promptText="Type" maxWidth="Infinity"/>
+
+            <TextField  fx:id="inputProject"  promptText="Project name"   styleClass="input-field"/>
+            <ComboBox   fx:id="inputUrgency"  promptText="Urgency"        maxWidth="Infinity"/>
+
+            <ComboBox   fx:id="inputEffort"   promptText="Effort (1–5)"   maxWidth="Infinity"/>
+
+            <Button fx:id="btnAdd" text="＋  Add Task" onAction="#onAddTask" maxWidth="Infinity" styleClass="btn-primary"/>
+
+            <Separator/>
+            <Button text="📋  Audit Log" onAction="#onShowAuditLog" maxWidth="Infinity"/>
+        </VBox>
+    </right>
+
+    <bottom>
+        <HBox styleClass="status-bar">
+            <Label fx:id="statusLabel" text="Ready"/>
+        </HBox>
+    </bottom>
+
+</BorderPane>
